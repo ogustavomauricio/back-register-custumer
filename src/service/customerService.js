@@ -54,8 +54,8 @@ const deleteCustumerService = async (id) => {
 
 //REQUISIÇÃO PARA ATUALIZAR CLIENTE
 const updateCustumerService = async (id, custumer) => {
-    const { error } = custumerSchema.validate(custumer);
-    if (error) return { status: 400, message: error.message}
+    // const { error } = custumerSchema.validate(custumer);
+    // if (error) return { status: 400, message: error.message}
 
     const verifyId = await verifyIdModel(id);
     if (!verifyId) return { status: 400, message: 'Cliente Não Existe'};

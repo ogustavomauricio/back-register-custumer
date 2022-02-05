@@ -41,8 +41,9 @@ const updateCustomerController = async(req, res) => {
     console.log('UPDATE',req.params, req.body);
     const { id } = req.params;
     
-    const updateProduct = await updateCustumerService(id, req.body, {new:true})
-    return res.status(200).json(updateProduct);
+    const updateCustumer = await updateCustumerService(id, req.body, {new:true})
+    console.log(updateCustumer);
+    return res.status(200).json(updateCustumer);
 };
 
 module.exports = {
