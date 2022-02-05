@@ -16,6 +16,6 @@ routes.post('/custumers', createCustumerController)
 routes.put('/custumers/:id', updateCustomerController)
 routes.delete('/custumers/:id', deleteCustomerController)
 
-routes.get('/', (req, res) => res.send('Hello World!'))
+routes.get('/', (req, res) => res.send('Acesse a url /custumers'))
 
 module.exports = routes;
