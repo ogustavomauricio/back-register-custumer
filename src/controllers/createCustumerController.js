@@ -6,6 +6,7 @@ const {
     getCustumerByIdService,
 } = require('../service/customerService')
 
+//FUNCAÇÃO PARA CRIAR UM NOVO CUSTUMER
 const createCustumerController = async (req, res) => {
     // console.log(req.body);
 const {status, message } = await createCustomerService(req.body);
@@ -13,11 +14,13 @@ const {status, message } = await createCustomerService(req.body);
 return res.status(status).json(message);
 };
 
+//FUNCAÇÃO PARA BUSCAR CUSTUMER
 const getCustumersController = async(req, res) => {
     const getAllCustumers = await getCustumersService()
     return res.status(200).json(getAllCustumers)
 };
 
+//FUNCAÇÃO PARA DELETAR UM CUSTUMER
 const deleteCustomerController = async (req, res) => {
     // console.log('CONTROLLER', req.params);
   const {status, message} = await deleteCustumerService(req.params)

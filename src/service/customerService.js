@@ -1,3 +1,4 @@
+const Joi = require('joi');
 const {
     createCustomersModel,
     verifyAlreadyCustumer,
@@ -8,15 +9,23 @@ const {
     getCustumerByIdModel,
 } = require('../model/custumersModel');
 
-const {
-    custumerSchema
-} = require('../validations/validateCustumer')
+// const {
+//     custumerSchema
+// } = require('../validations/validateCustumer')
 
+
+
+const custumerSchema= Joi.object({
+    name:Joi.string().required(),
+    age:Joi.string().required(),
+    city:Joi.string().required(),
+    state:Joi.string().required(),
+});
 // FUNÇÃO PARA CRIAR CLIENTE
 const createCustomerService = async (custumer) => {
-
-  const { error } = custumerSchema.validate(custumer);
-  if (error) return { status: 400, message: error.message}
+    // const { name, age, city, state } = custumer;
+  const {error} = custumerSchema.validate(custumer);
+  if (error) return { status: 400, message: error.message }
 
   const checkCustumer = await verifyAlreadyCustumer(custumer.name);
   if (checkCustumer) return { status: 400, message: 'Cliente já foi cadastrado'}
@@ -25,12 +34,14 @@ const createCustomerService = async (custumer) => {
  return { status, message };
 };
 
+// FUNÇÃO PARA BUSCAR TODOS OS CLIENTES
 const getCustumersService = async () => {
     const getAll = await getAllModel();
     // console.log(getAll);
     return getAll;
 };
 
+// FUNÇÃO PARA DELETAR CLIENTES
 const deleteCustumerService = async (id) => {
     // console.log('SERVICE', id);
   const verifyId = await verifyIdModel(id);
