@@ -29,8 +29,6 @@ const verifyIdModel = async (id) => {
   const verifyId = await conn.collection('customers').findOne({_id: ObjectId(id) });
   // console.log(verifyId);
   return verifyId;
-
-
 }
 
 const deleteCustumerModel = async (id) => {  
